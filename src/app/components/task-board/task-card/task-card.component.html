@@ -1,0 +1,16 @@
+
+<div class="card">
+    <p class="info">Title: {{task.title}} </p>
+    <p class="info">Description: {{task.description}} </p>
+    <div *ngIf="task.isDone; else notDone">
+        <p class="info" style="color: green;">This task is done</p>
+        <button style="background-color: red; color: white;" (click)="onDeleteTask()" >Delete</button>
+
+    </div>
+    <ng-template #notDone>
+    <p class="info" style="color: red;" >Not done</p>
+    <button (click)="onMarkDone()">Mark as done</button>      
+    </ng-template>
+
+</div>
+
