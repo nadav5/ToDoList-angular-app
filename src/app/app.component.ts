@@ -9,11 +9,12 @@ import {Task} from './interface/task.model'
 })
 export class AppComponent {
   title = 'my-app';
+  counterId: number= 1;
   tasks: Task[] = [];
 
   addTask(name: string, description: string){
     const task: Task = {
-      id: this.tasks.length + 1,
+      id: this.counterId++,
       title: name,
       description: description,
       isDone: false

@@ -1,12 +1,52 @@
-.card{
-    border: 2px solid #ccc;
-    border-radius: 12px;
-    padding: 16px;
-    margin: 12px auto;
-    width: 300px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #f9f9f9;
+:host {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
-.info{
-    font-weight: bold;
+
+.card {
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid #ccc;
+  padding: 16px;
+  border-radius: 8px;
+  margin: 12px auto;
+  background-color: #fdfdfd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.info {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.status {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.done {
+  color: green;
+}
+
+.not-done {
+  color: red;
+}
+
+button {
+  margin-top: 5px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-delete {
+  background-color: red;
+  color: white;
+}
+
+.btn-mark {
+  background-color: #eee;
+  color: black;
 }

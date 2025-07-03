@@ -1,6 +1,5 @@
 <app-task-card 
   *ngFor="let task of tasks" 
   [task]="task"
-  (markAsDone)="onTaskMarked($event)"
   (deleteTask)="onDeleteTask($event)">
 </app-task-card>

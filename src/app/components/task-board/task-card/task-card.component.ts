@@ -8,13 +8,12 @@ import { Task } from '../../../interface/task.model';
 })
 export class TaskCardComponent {
   @Input() task!: Task;
-  @Output() markAsDone = new EventEmitter<Task>();
-
-    @Output() deleteTask = new EventEmitter<Task>();
+  @Output() deleteTask = new EventEmitter<Task>();
 
 
 onMarkDone() {
-  this.markAsDone.emit(this.task);
+  this.task.isDone=true;
+  console.log("Task is done");
 }
 
 onDeleteTask(){
