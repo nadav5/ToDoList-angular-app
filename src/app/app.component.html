@@ -1,12 +1,15 @@
 <h1>Task Project</h1>
-<div>
-    <p>Enter Name</p>
-    <input #taskName type="text">
-</div>
-<div>
-    <p>Enter description</p>
-    <input #taskDescription type="text">
-</div>
-<button (click)="addTask(taskName.value,taskDescription.value)" >Add Task</button>
-<app-task-board [tasks]="tasks"></app-task-board>
 
+<div>
+  <p>Enter Name</p>
+  <input #taskName type="text">
+</div>
+
+<div>
+  <p>Enter Description</p>
+  <input #taskDescription type="text">
+</div>
+
+<button (click)="addTask(taskName.value, taskDescription.value)">Add Task</button>
+
+<app-task-board #taskBoard></app-task-board>

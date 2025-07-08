@@ -1,6 +1,6 @@
-import { Component, ContentChild, ElementRef, AfterContentInit } from '@angular/core';
-import {Task} from './interface/task.model'
-  
+import { Component, ViewChild } from '@angular/core';
+import { TaskApiService } from './services/task-api.service';
+import { TaskBoardComponent } from './components/task-board/task-board.component';
 
 @Component({
   selector: 'app-root',
@@ -9,18 +9,20 @@ import {Task} from './interface/task.model'
 })
 export class AppComponent {
   title = 'my-app';
-  counterId: number= 1;
-  tasks: Task[] = [];
 
-  addTask(name: string, description: string){
-    const task: Task = {
-      id: this.counterId++,
-      title: name,
-      description: description,
-      isDone: false
-    }; 
-    this.tasks.push(task);
-    console.log(name);
+  @ViewChild(TaskBoardComponent) taskBoard!: TaskBoardComponent;
+
+  constructor(private taskApiService: TaskApiService) {}
+
+  public addTask(name: string, description: string): void {
+    this.taskApiService.addTask(name, description).subscribe({
+      next: (res) => {
+        console.log('Task added!', res);
+        this.taskBoard.loadTasks(); 
+      },
+      error: (err) => {
+        console.error('Failed to add task', err);
+      }
+    });
   }
-
 }

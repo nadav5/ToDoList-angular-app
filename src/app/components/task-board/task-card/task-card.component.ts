@@ -1,5 +1,6 @@
-import { Component, Input,Output,EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Task } from '../../../interface/task.model';
+import { TaskApiService } from 'src/app/services/task-api.service';
 
 @Component({
   selector: 'app-task-card',
@@ -10,15 +11,21 @@ export class TaskCardComponent {
   @Input() task!: Task;
   @Output() deleteTask = new EventEmitter<Task>();
 
+  constructor(private taskApiService: TaskApiService) {}
 
-onMarkDone() {
-  this.task.isDone=true;
-  console.log("Task is done");
-}
+  onMarkDone() {
+    this.taskApiService.markAsDone(this.task.id).subscribe({
+      next: (res) => {
+        console.log('Task marked as done!', res);
+        this.task.isDone = true;
+      },
+      error: (err) => {
+        console.error('Failed to mark task as done', err);
+      }
+    });
+  }
 
-onDeleteTask(){
-  this.deleteTask.emit(this.task);
-}
-
-  
+  onDeleteTask() {
+    this.deleteTask.emit(this.task);
+  }
 }

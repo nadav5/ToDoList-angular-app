@@ -2,16 +2,15 @@
   <p class="info">Title: {{ task.title }}</p>
   <p class="info">Description: {{ task.description }}</p>
 
-    <p class="info status" [ngClass]="task.isDone ? 'done' : 'not-done'">
-        {{ task.isDone ? 'This task is done' : 'Not done' }}
-    </p>
+  <p class="info status" [ngClass]="task.isDone ? 'done' : 'not-done'">
+    {{ task.isDone ? 'This task is done' : 'Not done' }}
+  </p>
 
-    <ng-container *ngIf="task.isDone; else notDone">
+  <ng-container *ngIf="task.isDone; else notDone">
     <button class="btn-delete" (click)="onDeleteTask()">Delete</button>
-    </ng-container>
+  </ng-container>
 
-    <ng-template #notDone>
+  <ng-template #notDone>
     <button class="btn-mark" (click)="onMarkDone()">Mark as done</button>
-    </ng-template>
-
+  </ng-template>
 </div>
